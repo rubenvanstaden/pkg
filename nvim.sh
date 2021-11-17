@@ -4,10 +4,11 @@ set -ex
 
 PKG_NAME="nvim"
 PKG_VERSION="0.5.1"
-PKG_PATH="$HOME/packages"
+SRC_PATH="$HOME/.local/src"
+BIN_PATH="$HOME/.local/bin"
 
-mkdir -p "$PKG_PATH/$PKG_NAME/$PKG_VERSION"
-cd "$PKG_PATH/$PKG_NAME/$PKG_VERSION"
+mkdir -p "$SRC_PATH/$PKG_NAME-$PKG_VERSION"
+cd "$SRC_PATH/$PKG_NAME-$PKG_VERSION"
 wget "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 chmod u+x nvim.appimage
-sudo ln -s "$PKG_PATH/$PKG_NAME/$PKG_VERSION/nvim.appimage" "/usr/local/bin/$PKG_NAME"
+ln -s "$SRC_PATH/$PKG_NAME-$PKG_VERSION/nvim.appimage" "$BIN_PATH/$PKG_NAME"

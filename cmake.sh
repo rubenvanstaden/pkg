@@ -4,15 +4,16 @@ set -ex
 
 PKG_NAME="cmake"
 PKG_VERSION="3.21.0"
-PKG_PATH="$HOME/packages"
+PREFIX="/usr/local"
+SRC_PATH="$PREFIX/src"
 
-mkdir -p "$PKG_NAME"
-cd "$PKG_NAME"
-wget "https://github.com/Kitware/CMake/releases/download/v$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
-tar -zxvf "$PKG_NAME-$PKG_VERSION.tar.gz"
-mv "$PKG_NAME-$PKG_VERSION" "$PKG_VERSION"
-rm "$PKG_NAME-$PKG_VERSION.tar.gz"
-cd "$PKG_VERSION"
-./bootstrap
+cd /tmp
+wget "https://github.com/Kitware/CMake/releases/download/v$PKG_VERSION/cmake-$PKG_VERSION.tar.gz"
+tar -zxvf "cmake-$PKG_VERSION.tar.gz"
+
+mv "cmake-$PKG_VERSION" "$SRC_PATH/$PKG_NAME-$PKG_VERSION"
+cd "$SRC_PATH/$PKG_NAME-$PKG_VERSION"
+
+./bootstrap --prefix="$PREFIX"
 make -j $(nproc) all
-sudo make install
+make install

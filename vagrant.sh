@@ -4,11 +4,11 @@ set -ex
 
 PKG_NAME="vagrant"
 PKG_VERSION="2.2.19"
-PKG_PATH="$HOME/packages"
+SRC_PATH="$HOME/.local/src"
+BIN_PATH="$HOME/.local/bin"
 
-mkdir -p "$PKG_PATH/$PKG_NAME/$PKG_VERSION"
-cd "$PKG_PATH/$PKG_NAME/$PKG_VERSION"
+cd /tmp
 wget "https://releases.hashicorp.com/vagrant/$PKG_VERSION/vagrant_${PKG_VERSION}_linux_amd64.zip"
-unzip "vagrant*"
-rm *.zip
-sudo ln -s "$PKG_PATH/$PKG_NAME/$PKG_VERSION/vagrant" "/usr/local/bin/$PKG_NAME"
+unzip "vagrant_${PKG_VERSION}_linux_amd64.zip" -d "$SRC_PATH/$PKG_NAME-$PKG_VERSION"
+
+ln -s "$SRC_PATH/$PKG_NAME-$PKG_VERSION/$PKG_NAME" "$BIN_PATH/$PKG_NAME"
