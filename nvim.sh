@@ -3,7 +3,7 @@
 set -ex
 
 PKG_NAME="nvim"
-PKG_VERSION="0.5.1"
+PKG_VERSION="0.6.0"
 SRC_PATH="$HOME/.local/src"
 BIN_PATH="$HOME/.local/bin"
 

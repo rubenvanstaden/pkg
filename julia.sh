@@ -4,8 +4,9 @@ set -ex
 
 PKG_NAME="julia"
 PKG_VERSION="1.6.3"
-SRC_PATH="/usr/local/src"
-BIN_PATH="/usr/local/bin"
+PREFIX="/usr/local"
+SRC_PATH="$PREFIX/src"
+BIN_PATH="$PREFIX/bin"
 
 cd /tmp
 wget "https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-$PKG_VERSION-linux-x86_64.tar.gz"
